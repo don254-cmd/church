@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Church</title>
+  </head>
+<body>
+
+  <header>
+    <h1>Welcome to Pst John Daniel's Our Church</h1>
+    <p>"A place of worship, love, and community"</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#ministries">Ministries</a>
+    <a href="#events">Events</a>
+    <a href="#sermons">Sermons</a>
+    <a href="#giving">Giving</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a community of believers dedicated to spreading the love of Christ. Our mission is to serve God and others with joy and humility.</p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <p><strong>Sunday Service:</strong> 10:00 AM</p>
+    <p><strong>Midweek Fellowship:</strong> Wednesday 6:00 PM</p>
+    <p>Location: [Insert Church Address with Google Maps]</p>
+  </section>
+
+  <section id="ministries">
+    <h2>Ministries</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1" alt="Youth Ministry">
+        <h3>Youth Ministry</h3>
+        <p>Empowering the next generation through faith, fun, and fellowship.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64" alt="Sunday School">
+        <h3>Sunday School</h3>
+        <p>Building a strong biblical foundation for our children.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Choir">
+        <h3>Choir & Music</h3>
+        <p>Worshiping God through song and music ministry.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Outreach">
+        <h3>Outreach & Missions</h3>
+        <p>Serving our community and reaching out with the love of Christ.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+  <h2>Upcoming Events</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Youth Camp 2025</h3>
+      <p>Join us for a weekend of worship, fun, and spiritual growth.</p>
+      <a href="#" class="btn" onclick="openForm('Youth Camp 2025')">Register</a>
+    </div>
+    <div class="card">
+      <h3>Annual Revival</h3>
+      <p>A powerful time of prayer, healing, and renewal in the Spirit.</p>
+      <a href="#" class="btn" onclick="openForm('Annual Revival')">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Form -->
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">&times;</span>
+    <h3 id="eventTitle">Event Registration</h3>
+    <form onsubmit="sendToWhatsApp(event)">
+      <input type="text" id="name" placeholder="Your Full Name" required><br><br>
+      <input type="text" id="phone" placeholder="Your Phone Number" required><br><br>
+      <input type="email" id="email" placeholder="Your Email" required><br><br>
+      <textarea id="message" placeholder="Any message?" rows="3"></textarea><br><br>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  let selectedEvent = "";
+
+  function openForm(eventName) {
+    selectedEvent = eventName;
+    document.getElementById("eventTitle").innerText = "Register for " + eventName;
+    document.getElementById("registerModal").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("registerModal").style.display = "none";
+  }
+
+  function sendToWhatsApp(event) {
+    event.preventDefault(); // Prevent normal form submit
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    // Your WhatsApp number (with country code, no + sign, no spaces)
+    let churchNumber = "254795540536"; // Example Kenya number
+
+    let whatsappURL = "https://wa.me/" + churchNumber + 
+      "?text=" + encodeURIComponent(
+        "Event Registration: " + selectedEvent + "\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + email + "\n" +
+        "Message: " + message
+      );
+
+    window.open(whatsappURL, "_blank");
+  }
+
+  // Close modal if user clicks outside
+  window.onclick = function(event) {
+    let modal = document.getElementById("registerModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<section id="sermons">
+  <h2>Sermons</h2>
+  <p>Watch or listen to our latest sermons online:</p>
+  <iframe width="100%" height="315" 
+    src="https://www.youtube.com/watch?v=NSdc2qw2S-o/embed/VIDEO_ID?autoplay=1&mute=1" 
+    title="YouTube sermon" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</section>
+
+
+  <section id="giving">
+  <h2>Giving</h2>
+  <p>Your support helps us continue God’s work. You can give online:</p>
+  <a href="#" class="btn" onclick="openModal()">Give Now</a>
+</section>
+
+<!-- Modal -->
+<div id="givingModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Support Our Church</h3>
+    <p><strong>MPESA Paybill:</strong> 123456<br>
+       <strong>Account Number:</strong> YourChurchName</p>
+    <hr>
+    <p><strong>Bank Name:</strong> Example Bank<br>
+       <strong>Account Name:</strong> Our Church<br>
+       <strong>Account Number:</strong> 9876543210<br>
+       <strong>Branch:</strong> KITALE</p>
+  </div>
+</div>
+
+
+<script>
+  function openModal() {
+    document.getElementById("givingModal").style.display = "block";
+  }
+  function closeModal() {
+    document.getElementById("givingModal").style.display = "none";
+  }
+  // Close modal if user clicks outside the box
+  window.onclick = function(event) {
+    let modal = document.getElementById("givingModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: church@email.com</p>
+    <p>Phone: +254710834668</p>
+    <p>Address: saboti, kitale, kenya</p>
+    <p>Follow us: [Facebook | YouTube | Instagram| Pastor.JOHN DANIEL]</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Our Church by Don Carlos | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Page</title>
+<meta name="generator" content="WYSIWYG Web Builder 20 - https://www.wysiwygwebbuilder.com">
+<link href="church.css" rel="stylesheet">
+<link href="index.css" rel="stylesheet">
+</head>
+<body>
+</body>
+</html>
